@@ -3,7 +3,7 @@
 all: parity clk_divider pulse_generator
 
 parity: parity.v
-	iverilog parity.v -o counter
+	iverilog parity.v parity_test.v -o parity
 
 clk_divider: clk_divider.v clk_divider_test.v
 	iverilog clk_divider.v clk_divider_test.v -o clk_divider
