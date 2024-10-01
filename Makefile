@@ -2,10 +2,11 @@ TARGETS := parity clk_divider pulse_generator decoder test_div_3
 
 .PHONY: clean all
 
-all: $(TARGETS)
+all: $(addsuffix .vvp, $(TARGETS))
 
-%: %.v %_test.v
-	iverilog $@.v $@_test.v -o $@
+%.vvp: %.v %_test.v
+	iverilog $^ -o $@
 
 clean:
-	rm $(TARGETS)
+	rm -f *.vvp
+	rm -f *.vcd
