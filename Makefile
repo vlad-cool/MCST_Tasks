@@ -1,4 +1,4 @@
-TARGETS := parity clk_divider pulse_generator decoder test_div_3
+TARGETS := parity clk_divider pulse_generator decoder test_div_3 log2
 
 .PHONY: clean all
 
