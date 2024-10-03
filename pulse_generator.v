@@ -12,12 +12,14 @@ always @(posedge clk) begin
         counter <= 0;
     end 
     else begin
-        counter <= counter + 1;
+        if (counter == 4) begin
+            counter <= 0;
+        end
+        else begin
+            counter <= counter + 1;
+        end
     end
 
-    if (counter == 4) begin
-        counter <= 0;
-    end
 end
 
 assign clk_out = counter == 4 ? 1 : 0;
