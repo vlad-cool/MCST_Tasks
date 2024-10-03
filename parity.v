@@ -7,7 +7,7 @@ module parity
     output wire out
 );
 
-assign out = in[0];
+assign out = ~in[0];
 
 endmodule
 

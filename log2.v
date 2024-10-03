@@ -4,14 +4,14 @@ module decoder
     output wire[2:0] out
 );
 
-assign out = in ==   1 ? 0 : 
-             in ==   2 ? 1 : 
-             in ==   4 ? 2 : 
-             in ==   8 ? 3 : 
-             in ==  16 ? 4 : 
-             in ==  32 ? 5 : 
-             in ==  64 ? 6 : 
-             in == 128 ? 7 : 0;
+assign out = ({in[0], in[0], in[0], in[0],  in[0], in[0], in[0], in[0]} & 0) | 
+             ({in[1], in[1], in[1], in[1],  in[1], in[1], in[1], in[1]} & 1) |
+             ({in[2], in[2], in[2], in[2],  in[2], in[2], in[2], in[2]} & 2) |
+             ({in[3], in[3], in[3], in[3],  in[3], in[3], in[3], in[3]} & 3) |
+             ({in[4], in[4], in[4], in[4],  in[4], in[4], in[4], in[4]} & 4) |
+             ({in[5], in[5], in[5], in[5],  in[5], in[5], in[5], in[5]} & 5) |
+             ({in[6], in[6], in[6], in[6],  in[6], in[6], in[6], in[6]} & 6) |
+             ({in[7], in[7], in[7], in[7],  in[7], in[7], in[7], in[7]} & 7);
 
 endmodule
 

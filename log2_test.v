@@ -44,6 +44,16 @@ initial begin
     $display("Input: %b", input_data);
     $display("Output: %b", output_data);
 
+    input_data <= 64;
+    #1
+    $display("Input: %b", input_data);
+    $display("Output: %b", output_data);
+
+    input_data <= 128;
+    #1
+    $display("Input: %b", input_data);
+    $display("Output: %b", output_data);
+
     $finish;
 end
 

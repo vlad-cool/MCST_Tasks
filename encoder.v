@@ -4,13 +4,13 @@ module encoder
     output wire[2:0] out
 );
 
-assign out = (in & 128) == 128 ? 7 :
-             (in &  64) ==  64 ? 6 :
-             (in &  32) ==  32 ? 5 :
-             (in &  16) ==  16 ? 4 :
-             (in &   8) ==   8 ? 3 :
-             (in &   4) ==   4 ? 2 :
-             (in &   2) ==   2 ? 1 : 0;
+assign out = in[7] == 1 ? 7 :
+             in[6] == 1 ? 6 :
+             in[5] == 1 ? 5 :
+             in[4] == 1 ? 4 :
+             in[3] == 1 ? 3 :
+             in[2] == 1 ? 2 :
+             in[1] == 1 ? 1 : 0;
 
 endmodule
 
