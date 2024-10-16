@@ -1,17 +1,25 @@
 module decoder
+#(
+    parameter size = 8
+)
 (
-    input wire[7:0] in,
-    output wire[2:0] out
+    input wire[size - 1:0] in,
+    output wire[$clog2(size) - 1:0] out
 );
 
-assign out = ({8{in[0]}} & 0) | 
-             ({8{in[1]}} & 1) |
-             ({8{in[2]}} & 2) |
-             ({8{in[3]}} & 3) |
-             ({8{in[4]}} & 4) |
-             ({8{in[5]}} & 5) |
-             ({8{in[6]}} & 6) |
-             ({8{in[7]}} & 7);
+wire tmp[size - 1:0];
+
+genvar i;
+
+generate
+    assign tmp[0] = {size{in[0]}} & 0;
+    for (i = 1; i < size; i = i + 1)
+    begin
+        assign tmp[i] = tmp[i - 1] | ({size{in[i]}} & i);
+    end
+endgenerate
+
+assign out = tmp[size - 1];
 
 endmodule
 
